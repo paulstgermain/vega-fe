@@ -1,19 +1,19 @@
 import React from "react";
 import Box from "@mui/material/Box";
+import JobCard from "./JobCard";
 
-function Column(jobs: Array<Job>, status: string) {
+const Column: React.FC<ColumnProps> = ({jobs, status}) => {
+
+// make new const 'title' that makes the first letter of the status uppercase
+  const title = status.charAt(0).toUpperCase() + status.slice(1);
 
   return (
     <div>
-      <h2>{status}</h2>
+      <h2>{title}</h2>
       <Box>
-        {jobs.map((job, index) => {
-          return (
-            <div key={index}>
-              <p>{job["title"]}</p>
-            </div>
-          );
-        })}
+        {jobs.map((job: Job, index) => (
+          <JobCard key={index} job={job} />
+        ))}
       </Box>
     </div>
   );

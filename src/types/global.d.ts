@@ -3,8 +3,25 @@
 // Interface for the Job object
 
 interface Job {
-  title: string;
+  id: string;
+  job_title: string;
+  salary: string;
+  company_name: string;
+  location: string;
+  url: string;
   description: string;
   status: string;
-  id: string;
+}
+
+interface JobsByStatus {
+  [key: string]: Job[];
+}
+
+interface JobCardProps {
+  job: Job;
+}
+
+interface ColumnProps {
+  jobs: Array<Job>;
+  status: string;
 }
