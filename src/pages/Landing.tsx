@@ -3,9 +3,6 @@ import CustomButton from '../components/Button';
 
 function App () {
   return (<div className="App">
-      <header className="App-header">
-        <CustomButton />
-      </header>
     </div>)
 }
 
