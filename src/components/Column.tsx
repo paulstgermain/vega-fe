@@ -1,6 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import JobCard from "./JobCard";
+import { Typography } from "@mui/material";
 
 const Column: React.FC<ColumnProps> = ({jobs, status}) => {
 
@@ -9,8 +10,8 @@ const Column: React.FC<ColumnProps> = ({jobs, status}) => {
 
   return (
     <div>
-      <h2>{title}</h2>
-      <Box>
+      <Typography align="center" my={2} sx={{ fontSize: 32 }} color="text.secondary">{title} ({jobs.length})</Typography>
+      <Box sx={{ px: 1 }}>
         {jobs.map((job: Job, index) => (
           <JobCard key={index} job={job} />
         ))}
