@@ -13,7 +13,7 @@ function Board() {
 
   return (
     // <div>
-    <Box sx={{ display: 'flex', flexDirection: 'column', pt: 8, px: 2 }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', pt: 8, px: 2, mt: 2 }}>
       <Box sx={{ overflowX: 'auto', whiteSpace: 'nowrap' }}>
         <Grid container spacing={2} sx={{ display: 'inline-flex', flexWrap: 'nowrap' }}>
           {jobs &&

@@ -23,7 +23,7 @@ const JobCard: React.FC<JobCardProps> = ({ job }) => {
             { description }
           </Typography>
           <Typography sx={{ marginTop: '8px' }}variant="body2">
-            <a href={url} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
+            <a href={url} target="_blank" rel="noreferrer">
               View Job Posting
             </a>
           </Typography>

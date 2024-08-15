@@ -1,26 +1,30 @@
 import React from 'react';
 import { Container, Typography, Button, Grid, Box, Card, CardContent } from '@mui/material';
 import lyra from '../images/42_Leier.png';
+import HeroBackground from '../components/HeroBackground';
 
 const Landing: React.FC = () => {
   return (
-    <Container maxWidth="lg" sx={{ mt: 14 }}>
+    <Container maxWidth="lg">
       {/* Hero Section */}
-      <Box sx={{ textAlign: 'center', my: 8, borderRadius: 2 }}>
-        <Typography variant="h2" gutterBottom>
-          Job search got you stressed?
-        </Typography>
-        <Typography variant="h5" gutterBottom>
-          Welcome to Vega, designed to ease the job hunt for tech workers by enabling easy, nuanced management of job postings, statuses, and more.
-        </Typography>
-        <Typography variant="h6" sx={{ mt: 4 }}>Don't search alone:</Typography>
-        <Button variant="contained" color="secondary" size="large" sx={{ mt: 2 }}>
-          Let us be your North Star.
-        </Button>
+      <Box sx={{ textAlign: 'center', mt: 8, borderRadius: 2, height: '100vh', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+        <HeroBackground />
+        <Box sx={{ position: 'relative', zIndex: 1 }}>
+          <Typography variant="h2" color="common.white" gutterBottom>
+            Job search got you stressed?
+          </Typography>
+          <Typography variant="h5" color="common.white" gutterBottom>
+            Welcome to Vega, designed to ease the job hunt for tech workers by enabling easy, nuanced management of job postings, statuses, and more.
+          </Typography>
+          <Typography variant="h6" color="common.white" sx={{ mt: 4 }}>Don't search alone:</Typography>
+          <Button variant="contained" color="secondary" size="large" sx={{ mt: 2 }}>
+            Let us be your North Star.
+          </Button>
+        </Box>
       </Box>
 
       {/* Why Vega Section */}
-      <Box sx={{ mt: 10 }}>
+      <Box sx={{ mt: 2, mb: 4 }}>
         <Typography variant="h3" gutterBottom>
           Why Vega?
         </Typography>
