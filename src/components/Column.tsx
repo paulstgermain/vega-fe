@@ -10,7 +10,7 @@ const Column: React.FC<ColumnProps> = ({jobs, status}) => {
 
   return (
     <div>
-      <Typography align="center" my={2} sx={{ fontSize: 32 }} color="text.secondary">{title} ({jobs.length})</Typography>
+      <Typography align="center" my={2} sx={{ fontSize: 32 }} color="text.primary">{title} ({jobs.length})</Typography>
       <Box sx={{ px: 1 }}>
         {jobs.map((job: Job, index) => (
           <JobCard key={index} job={job} />
