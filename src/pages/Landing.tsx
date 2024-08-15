@@ -4,17 +4,17 @@ import lyra from '../images/42_Leier.png';
 
 const Landing: React.FC = () => {
   return (
-    <Container maxWidth="lg" sx={{ mt: 4 }}>
+    <Container maxWidth="lg" sx={{ mt: 14 }}>
       {/* Hero Section */}
-      <Box sx={{ textAlign: 'center', py: 8, backgroundColor: '#f5f5f5', borderRadius: 2 }}>
+      <Box sx={{ textAlign: 'center', my: 8, borderRadius: 2 }}>
         <Typography variant="h2" gutterBottom>
-          Welcome to Your Job Search Solution
+          Job search got you stressed?
         </Typography>
         <Typography variant="h5" gutterBottom>
-          Designed to ease the job hunt for tech workers by enabling easy, nuanced management of job postings, statuses, and more.
+          Welcome to Vega, designed to ease the job hunt for tech workers by enabling easy, nuanced management of job postings, statuses, and more.
         </Typography>
         <Typography variant="h6" sx={{ mt: 4 }}>Don't search alone:</Typography>
-        <Button variant="contained" color="primary" size="large" sx={{ mt: 2 }}>
+        <Button variant="contained" color="secondary" size="large" sx={{ mt: 2 }}>
           Let us be your North Star.
         </Button>
       </Box>
