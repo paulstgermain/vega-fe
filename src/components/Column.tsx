@@ -5,7 +5,6 @@ import { Typography } from "@mui/material";
 
 const Column: React.FC<ColumnProps> = ({jobs, status}) => {
 
-// make new const 'title' that makes the first letter of the status uppercase
   const title = status.charAt(0).toUpperCase() + status.slice(1);
 
   return (

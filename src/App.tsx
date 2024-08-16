@@ -4,6 +4,7 @@ import './styles/global.css';
 import Landing from './pages/Landing'
 import Board from './pages/Board';
 import Navbar from './components/Navbar';
+import { AuthenticationGuard } from './components/AuthGuard';
 import theme from './theme';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -19,7 +20,7 @@ function App() {
         { /* Page Routes */ }
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/app" element={<Board />} />
+          <Route path="/app" element={<AuthenticationGuard component={Board} />} />
         </Routes>
       </ThemeProvider>
     </Router>
