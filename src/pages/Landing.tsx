@@ -2,6 +2,12 @@ import React from 'react';
 import { Typography, Button, Grid, Box, Card, CardContent, CardMedia } from '@mui/material';
 import lyra from '../images/42_Leier.png';
 import HeroBackground from '../components/HeroBackground';
+import proud from '../images/undraw_feeling_proud_qne1.svg';
+import jobhunt from '../images/undraw_job_hunt_re_q203.svg';
+import letter from '../images/undraw_letter_re_8m03.svg';
+import resume from '../images/undraw_online_resume_re_ru7s.svg';
+import welldone from '../images/undraw_well_done_re_3hpo.svg';
+import developer from '../images/undraw_code_thinking_re_gka2.svg';
 
 const Landing: React.FC = () => {
   return (
@@ -29,7 +35,7 @@ const Landing: React.FC = () => {
           <Grid item xs={12} md={6}>
             <Box sx={{ width: '100%', height: 'auto', display: 'flex', justifyContent: 'center' }}>
               <img
-                src="path_to_your_gif.gif"
+                src={developer}
                 alt="Vega in action"
                 style={{ maxWidth: '100%', borderRadius: '8px' }}
               />
@@ -66,11 +72,23 @@ const Landing: React.FC = () => {
 
           {/* Day 1 */}
           <Grid item xs={12} md={6}>
-            <Card sx={{ display: 'flex', alignItems: 'center', bgcolor: '', color: 'text.primary' }}>
+            <Card sx={{
+              display: 'flex',
+              alignItems: 'center',
+              bgcolor: '',
+              color: 'text.primary',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              boxShadow: '3px 2px 4px 0px rgba(220,34,115,0.70)',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: '10px 10px 14px 3px rgba(220,34,115,0.70)',
+                },
+                position: 'relative',
+            }}>
               <CardMedia
                 component="img"
-                sx={{ width: 80 }}
-                image="imagepathplaceholder.png"
+                sx={{ width: 120, px: 2 }}
+                image={jobhunt}
                 alt="Day 1 Icon"
               />
               <CardContent>
@@ -86,11 +104,24 @@ const Landing: React.FC = () => {
 
           {/* Day 2 */}
           <Grid item xs={12} md={6}>
-            <Card sx={{ display: 'flex', height: '227px', alignItems: 'center', bgcolor: '', color: 'text.primary' }}>
+            <Card sx={{
+              display: 'flex',
+              height: '227px',
+              alignItems: 'center',
+              bgcolor: '',
+              color: 'text.primary',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              boxShadow: '3px 2px 4px 0px rgba(220,34,115,0.70)',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: '10px 10px 14px 3px rgba(220,34,115,0.70)',
+                },
+                position: 'relative',
+            }}>
               <CardMedia
                 component="img"
-                sx={{ width: 80 }}
-                image="imagepathplaceholder.png"
+                sx={{ width: 120, px: 2 }}
+                image={resume}
                 alt="Day 2 Icon"
               />
               <CardContent>
@@ -104,11 +135,23 @@ const Landing: React.FC = () => {
 
           {/* Day 3 */}
           <Grid item xs={12} md={6}>
-            <Card sx={{ display: 'flex', alignItems: 'center', bgcolor: '', color: 'text.primary' }}>
+            <Card sx={{
+              display: 'flex',
+              alignItems: 'center',
+              bgcolor: '',
+              color: 'text.primary',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              boxShadow: '3px 2px 4px 0px rgba(220,34,115,0.70)',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: '10px 10px 14px 3px rgba(220,34,115,0.70)',
+                },
+                position: 'relative',
+            }}>
               <CardMedia
                 component="img"
-                sx={{ width: 80 }}
-                image="imagepathplaceholder.png"
+                sx={{ width: 120, px: 2 }}
+                image={letter}
                 alt="Day 3 Icon"
               />
               <CardContent>
@@ -122,14 +165,27 @@ const Landing: React.FC = () => {
 
           {/* Day 4 */}
           <Grid item xs={12} md={6}>
-            <Card sx={{ display: 'flex', height: '201px', alignItems: 'center', bgcolor: '', color: 'text.primary' }}>
+            <Card sx={{
+              display: 'flex',
+              height: '201px',
+              alignItems: 'center',
+              bgcolor: '',
+              color: 'text.primary',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              boxShadow: '3px 2px 4px 0px rgba(220,34,115,0.70)',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: '10px 10px 14px 3px rgba(220,34,115,0.70)',
+                },
+                position: 'relative',
+            }}>
               <CardMedia
                 component="img"
-                sx={{ width: 80 }}
-                image="imagepathplaceholder.png"
+                sx={{ width: 120, px: 2 }}
+                image={welldone}
                 alt="Day 4 Icon"
               />
-              <CardContent>
+              <CardContent sx={{ marginTop: '-45px' }}>
                 <Typography variant="h5" sx={{ fontSize: '1.5rem', lineHeight: 1.4 }}>Day 4</Typography>
                 <Typography variant="body2" sx={{ fontSize: '1rem', lineHeight: 1.6 }}>
                   Another pure job posting collection day! Give yourself a break—and look at how many high-quality job applications you pulled off in the last half week!
@@ -140,11 +196,25 @@ const Landing: React.FC = () => {
 
           {/* Day 5 - ? */}
           <Grid item xs={12} md={6}>
-            <Card sx={{ display: 'flex', ml: 20, width: '145%', alignItems: 'center', bgcolor: '', color: 'text.primary' }}>
+            <Card sx={{
+              display: 'flex',
+              ml: 20,
+              width: '145%',
+              alignItems: 'center',
+              bgcolor: '',
+              color: 'text.primary',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              boxShadow: '3px 2px 4px 0px rgba(220,34,115,0.70)',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: '10px 10px 14px 3px rgba(220,34,115,0.70)',
+                },
+                position: 'relative',
+            }}>
               <CardMedia
                 component="img"
-                sx={{ width: 80 }}
-                image="imagepathplaceholder.png"
+                sx={{ width: 120, px: 2 }}
+                image={proud}
                 alt="Day 5 Icon"
               />
               <CardContent>
@@ -161,7 +231,7 @@ const Landing: React.FC = () => {
       </Box>
 
       {/* Why Vega Section */}
-      <Box sx={{ width: '90%', py: 8, pl: 16 }}>
+      <Box sx={{ width: '88%', py: 8, pl: 16 }}>
         <Typography variant="h3" gutterBottom>
           Why Vega?
         </Typography>

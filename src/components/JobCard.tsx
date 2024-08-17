@@ -1,4 +1,4 @@
-import { Card, CardContent, CardActions, Typography, Button, FormControl, InputLabel, MenuItem, Select, CardHeader, SelectChangeEvent } from '@mui/material';
+import { Card, CardContent, CardActions, Typography, Button, FormControl, InputLabel, MenuItem, Select, CardHeader, SelectChangeEvent, Box } from '@mui/material';
 import { ReactNode, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import JobModal from './JobModal';
@@ -69,8 +69,16 @@ const JobCard: React.FC<JobCardProps> = ({ job, handleJobStatusChange }) => {
   }
 
   return (
-    <div>
-      <Card sx={{ minWidth: 200, marginTop: "12px", marginBottom: "24px", textOverflow: "ellipses" }}>
+    <Box sx={{
+      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+      boxShadow: '3px 2px 4px 0px rgba(220,34,115,0.32)',
+      '&:hover': {
+        transform: 'translateY(-4px)',
+        boxShadow: '10px 10px 14px 3px rgba(220,34,115,0.32)',
+        },
+        position: 'relative',
+    }}>
+      <Card sx={{minWidth: 200,marginTop: "12px",marginBottom: "24px",textOverflow: "ellipses"}}>
         <CardHeader
           sx={{ backgroundColor: getCardHeaderColor(status) }}
         />
@@ -122,7 +130,7 @@ const JobCard: React.FC<JobCardProps> = ({ job, handleJobStatusChange }) => {
         job={job}
         handleSave={handleSave}
       />
-    </div>
+    </Box>
   );
 }
 

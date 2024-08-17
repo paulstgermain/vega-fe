@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import AuthButtons from './AuthButtons';
 
-function Navbar() {
+// update function declaration to use TypeScript
+function NavBar(): JSX.Element {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation(); // Get the current location
+
+  const { isAuthenticated } = useAuth0();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,8 +56,34 @@ function Navbar() {
               Vega
             </Typography>
             <Box sx={{ disply: 'flex', flexGrow: 10 }}>
-              <Link to="/" style={{ color: 'white', fontWeight: 'normal', marginRight: '12px' }}>Home</Link>
-              <Link to="/app" style={{ color: 'white', fontWeight: 'normal' }}>App</Link>
+              <Link
+                to="/"
+                style={{
+                    color: 'white',
+                    textDecorationColor: 'rgb(227, 78, 143)',
+                    textDecorationThickness: '3px',
+                    textUnderlineOffset: '4px',
+                    fontWeight: 'normal',
+                    marginRight: '12px'
+                  }}
+              >
+                  Home
+              </Link>
+              {isAuthenticated && (
+                <Link
+                  to="/app"
+                  style={{
+                      color: 'white',
+                      textDecorationColor: 'rgb(227, 78, 143)',
+                      textDecorationThickness: '3px',
+                      textUnderlineOffset: '4px',
+                      fontWeight: 'normal',
+                      marginRight: '12px'
+                  }}
+                >
+                  App
+                </Link>
+              )}
             </Box>
             <AuthButtons />
           </Toolbar>
@@ -65,4 +93,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default NavBar;
