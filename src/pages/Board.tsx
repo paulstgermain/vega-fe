@@ -1,6 +1,6 @@
-import { useState, useEffect, ReactNode } from 'react';
+import { useState, useEffect } from 'react';
 import Column from '../components/Column';
-import { Grid, Box, SelectChangeEvent } from '@mui/material';
+import { Grid, Box } from '@mui/material';
 import { useAuth0 } from "@auth0/auth0-react";
 
 function Board() {
@@ -36,9 +36,6 @@ function Board() {
       console.error(`Job with id ${jobId} not found.`);
       return;
     }
-  
-    const jobIndex = updatedJobs[oldStatus].findIndex((job) => job.id === jobId);
-    const job = { ...updatedJobs[oldStatus][jobIndex], status: newStatus }; // Create a new job object with updated status
   
     try {
       const accessToken = await getAccessTokenSilently({

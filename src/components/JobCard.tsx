@@ -1,8 +1,46 @@
-import { Card, CardContent, CardActions, Typography, Button, FormControl, InputLabel, MenuItem, Select, CardHeader, Link, SelectChangeEvent } from '@mui/material';
-import { ReactNode } from 'react';
+import { Card, CardContent, CardActions, Typography, Button, FormControl, InputLabel, MenuItem, Select, CardHeader, SelectChangeEvent } from '@mui/material';
+import { ReactNode, useState } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import JobModal from './JobModal';
 
 const JobCard: React.FC<JobCardProps> = ({ job, handleJobStatusChange }) => {
   const { id, job_title, salary, company_name, location, url, description, status } = job;
+  const { getAccessTokenSilently } = useAuth0();
+
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleOpenModal = () => setModalOpen(true);
+  const handleCloseModal = () => setModalOpen(false);
+
+  const handleSave = async (updatedJob: Job) => {
+    try {
+      const accessToken = await getAccessTokenSilently({
+        authorizationParams: {
+          audience: process.env.REACT_APP_API_AUDIENCE,
+          scope: "read:current_user",
+        },
+      });
+  
+      const response = await fetch(`${process.env.REACT_APP_BE_NODE_API}/api/jobs/${updatedJob.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(updatedJob),
+      });
+  
+      if (response.status === 200) {
+        console.log('Job updated successfully');
+        // trigger a re-fetch to render changes in Board ui
+        handleJobStatusChange(updatedJob.id, updatedJob.status);
+      } else {
+        console.error('Failed to update job');
+      }
+    } catch (error) {
+      console.error('Error updating job:', error);
+    }
+  };
 
   const handleChange = (event: SelectChangeEvent<string>, child: ReactNode) => {
     const newStatus = event.target.value as string;
@@ -35,10 +73,6 @@ const JobCard: React.FC<JobCardProps> = ({ job, handleJobStatusChange }) => {
       <Card sx={{ minWidth: 200, marginTop: "12px", marginBottom: "24px", textOverflow: "ellipses" }}>
         <CardHeader
           sx={{ backgroundColor: getCardHeaderColor(status) }}
-          // title={`${job_title} (${salary})`}
-          // subheader={`${company_name} - ${location}`}
-          // titleTypographyProps={{ fontSize: 16, color: '#FFFFFF', fontFamily: 'Montserrat' }}
-          // subheaderTypographyProps={{ fontSize: 14, color: 'text.secondary' }}
         />
         <CardContent>
           <Typography sx={{ fontSize: 16 }} color="text.primary" gutterBottom>
@@ -74,20 +108,20 @@ const JobCard: React.FC<JobCardProps> = ({ job, handleJobStatusChange }) => {
           </FormControl>
         </CardContent>
         <CardActions>
-          <Button size="small" color="secondary" variant="contained">View Job Data</Button>
-          {/* <Link href={`${url}`} rel="noopener noreferrer" target="_blank"><Button size="small" color="primary" variant="outlined">To Job Post</Button></Link> */}
+          <Button size="small" color="secondary" variant="contained" onClick={handleOpenModal}>View Job Data</Button>
           <Button size="small" color="primary" variant="outlined">
-            <a href={`https://${url}`} target="_blank" rel="noopener noreferrer">
+            <a href={`${url}`} target="_blank" rel="noopener noreferrer">
               To Job Post
             </a>
           </Button>
-          {/* <Typography sx={{ marginTop: '8px' }}variant="body2">
-            <a href={url} target="_blank" rel="noreferrer">
-              View Job Posting
-            </a>
-          </Typography> */}
         </CardActions>
       </Card>
+      <JobModal
+        open={isModalOpen}
+        handleClose={handleCloseModal}
+        job={job}
+        handleSave={handleSave}
+      />
     </div>
   );
 }

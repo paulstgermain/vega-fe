@@ -32,3 +32,10 @@ interface ColumnProps {
   status: string;
   handleJobStatusChange: (event: SelectChangeEvent<string>, child: ReactNode) => void;
 }
+
+interface JobModalProps {
+  open: boolean;
+  handleClose: () => void;
+  job: Job;
+  handleSave: (updatedJob: any) => void;
+}
