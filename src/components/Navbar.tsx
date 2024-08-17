@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -50,18 +50,13 @@ function Navbar() {
           }}
         >
           <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Vega
             </Typography>
+            <Box sx={{ disply: 'flex', flexGrow: 10 }}>
+              <Link to="/" style={{ color: 'white', fontWeight: 'normal', marginRight: '12px' }}>Home</Link>
+              <Link to="/app" style={{ color: 'white', fontWeight: 'normal' }}>App</Link>
+            </Box>
             <AuthButtons />
           </Toolbar>
         </AppBar>

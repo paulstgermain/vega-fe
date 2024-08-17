@@ -50,7 +50,7 @@ const Landing: React.FC = () => {
       </Box>
 
       {/* The Strategy Section */}
-      <Box sx={{ width: '100%', bgcolor: 'success.light', py: 8 }}>
+      <Box sx={{ width: '100%', bgcolor: 'success.main', py: 8 }}>
         <Grid container spacing={2} sx={{ maxWidth: 'lg', mx: 'auto' }}>
           <Grid item xs={12}>
             <Typography variant="h3" gutterBottom sx={{ fontSize: '2.5rem', lineHeight: 1.2, color: 'primary.contrastText' }}>

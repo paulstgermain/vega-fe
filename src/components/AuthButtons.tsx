@@ -49,7 +49,7 @@ const AuthButtons = () => {
   const { isAuthenticated } = useAuth0();
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', justifySelf: 'end' }}>
       {isAuthenticated ? (
         <LogoutButton />
       ) : (
