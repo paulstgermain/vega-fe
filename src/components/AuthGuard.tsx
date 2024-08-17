@@ -5,7 +5,7 @@ import Loading from "./Loading";
 export const AuthenticationGuard: React.FC<{ component: React.FC }> = ({ component }) => {
   const Component = withAuthenticationRequired(component, {
     onRedirecting: () => (
-      <div className="page-layout">
+      <div>
         <Loading />
       </div>
     ),

@@ -8,7 +8,6 @@ const JobModal: React.FC<JobModalProps> = ({ open, handleClose, job, handleSave 
     setJobInfo(job);
   }, [job]);
 
-  
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setJobInfo({ ...jobInfo, [name as string]: value });
@@ -39,7 +38,7 @@ const JobModal: React.FC<JobModalProps> = ({ open, handleClose, job, handleSave 
           borderRadius: 1,
         }}
       >
-        <Typography id="modal-modal-title" variant="h6" component="h2">
+        <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ fontFamily: "Montserrat" }}>
           Edit Job Information
         </Typography>
         <TextField
