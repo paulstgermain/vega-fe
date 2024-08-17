@@ -1,11 +1,13 @@
-import { Card, CardContent, CardActions, Typography, Button, FormControl, InputLabel, MenuItem, Select, CardHeader, Link } from '@mui/material';
+import { Card, CardContent, CardActions, Typography, Button, FormControl, InputLabel, MenuItem, Select, CardHeader, Link, SelectChangeEvent } from '@mui/material';
+import { ReactNode } from 'react';
 
-interface JobCardProps {
-  job: Job;
-}
-
-const JobCard: React.FC<JobCardProps> = ({ job }) => {
+const JobCard: React.FC<JobCardProps> = ({ job, handleJobStatusChange }) => {
   const { id, job_title, salary, company_name, location, url, description, status } = job;
+
+  const handleChange = (event: SelectChangeEvent<string>, child: ReactNode) => {
+    const newStatus = event.target.value as string;
+    handleJobStatusChange(id, newStatus);
+  };
 
   const getCardHeaderColor = (status: string) => {
     switch (status) {
@@ -59,7 +61,7 @@ const JobCard: React.FC<JobCardProps> = ({ job }) => {
             <Select
               value={status}
               label="Status"
-              // onChange={handleStatusChange}
+              onChange={handleChange}
             >
               <MenuItem value="discovered">Discovered</MenuItem>
               <MenuItem value="applied">Applied</MenuItem>

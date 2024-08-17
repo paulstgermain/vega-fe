@@ -19,9 +19,16 @@ interface JobsByStatus {
 
 interface JobCardProps {
   job: Job;
+  handleJobStatusChange: (event: SelectChangeEvent<string>, child: ReactNode) => void;
 }
 
 interface ColumnProps {
   jobs: Array<Job>;
   status: string;
+}
+
+interface ColumnProps {
+  jobs: Job[];
+  status: string;
+  handleJobStatusChange: (event: SelectChangeEvent<string>, child: ReactNode) => void;
 }
