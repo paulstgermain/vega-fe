@@ -7,6 +7,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import AuthButtons from './AuthButtons';
 
+import vega from '../images/vega.png';
+
 // update function declaration to use TypeScript
 function NavBar(): JSX.Element {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -52,6 +54,7 @@ function NavBar(): JSX.Element {
           }}
         >
           <Toolbar>
+          <img src={vega} alt="Vega Logo" width={25} height={25} style={{ marginRight: '12px', marginTop: '-3px' }} />
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Vega
             </Typography>
