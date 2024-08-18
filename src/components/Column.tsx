@@ -8,12 +8,15 @@ const Column: React.FC<ColumnProps> = ({jobs, status, handleJobStatusChange}) =>
   const title = status.charAt(0).toUpperCase() + status.slice(1);
 
   return (
-    <div>
-      <Typography align="center" mt={2} mb={4} sx={{ fontSize: 32 }} color="text.secondary" fontWeight={500}>{title} ({jobs.length})</Typography>
+    <div style={{ minHeight: '70vh' }}>
+      <Typography align="center" mt={2} mb={4} sx={{ fontSize: 32 }} color="text.secondary" fontWeight={500}>{title} ({jobs ? jobs.length : 0})</Typography>
       <Box sx={{ px: 1 }}>
-        {jobs.map((job: Job, index) => (
+        {jobs && jobs.map((job: Job, index) => (
           <JobCard key={index} job={job} handleJobStatusChange={handleJobStatusChange} />
         ))}
+        {!jobs && (
+          <Typography align="center" mt={2} mb={4} sx={{ fontSize: 16, wordWrap: 'break-word' }} color="text.secondary" fontWeight={500}>No jobs in this column</Typography>
+        )}
       </Box>
     </div>
   );

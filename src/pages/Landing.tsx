@@ -240,17 +240,17 @@ const Landing: React.FC = () => {
             <Card>
               <CardContent>
                 <Typography variant="body1" paragraph>
-                  Vega has been extensively studied by astronomers, leading it to be termed "arguably the next most important star in the sky after the Sun".
+                To astronomers, Vega is “arguably the next most important star in the sky after the Sun.” 
                 </Typography>
                 <Typography variant="body1" paragraph>
-                  Due to the Earth’s position in the universe being variable, we don’t always have the same North Star and, in about 12,000 years, Vega is predicted to be the next North Star in the line.
+                Poised to be our next North Star as Earth changes position in space, Vega represents a positive path toward the future, which is why we chose Vega as the name for our job seeker strategy board.
                 </Typography>
-                <Typography variant="body1" paragraph>
+                {/* <Typography variant="body1" paragraph>
                   As a future North Star, to me Vega represents guidance, change, and focus.
                 </Typography>
                 <Typography variant="body1" paragraph>
                   To the ancient Greeks, the constellation Lyra was formed from the harp of Orpheus, with Vega as its handle. As such, I would like for this app to be the instrument of guidance and focus for all job seekers.
-                </Typography>
+                </Typography> */}
                 <Typography variant="body2" color="textSecondary">
                   Read more here: <a href="https://en.wikipedia.org/wiki/Vega" target="_blank" rel="noopener noreferrer" style={{ color: "#dc2273" }}>Vega on Wikipedia</a>
                 </Typography>

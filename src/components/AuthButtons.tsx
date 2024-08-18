@@ -46,12 +46,17 @@ const LogoutButton = () => {
 };
 
 const AuthButtons = () => {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', justifySelf: 'end' }}>
-      {isAuthenticated ? (
-        <LogoutButton />
+      {isAuthenticated && user ? (
+        <>
+          <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifySelf: 'end' }}>
+            <p style={{ color: 'white', marginRight: '12px' }}>Welcome, {user.nickname}</p>
+            <LogoutButton />
+          </Box>
+        </>
       ) : (
         <>
           <LoginButton />

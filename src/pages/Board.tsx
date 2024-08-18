@@ -1,12 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import Column from '../components/Column';
 import { Grid, Box } from '@mui/material';
 import { useAuth0 } from "@auth0/auth0-react";
+import ColumnDivider from '../components/ColumnDivider';
 
 function Board() {
   const [jobs, setJobs] = useState<JobsByStatus | null>(null);
   const [updateJobs, setUpdateJobs] = useState<boolean>(false);
-  const { isAuthenticated, getAccessTokenSilently, loginWithRedirect } = useAuth0();
+  const { isAuthenticated, getAccessTokenSilently, loginWithRedirect, user } = useAuth0();
 
   const columnOrder = [
     'discovered',
@@ -96,7 +97,7 @@ function Board() {
         },
       });
   
-      fetch(`${process.env.REACT_APP_BE_NODE_API}/api/jobs/`, {
+      user && fetch(`${process.env.REACT_APP_BE_NODE_API}/api/jobs/auth/${user.sub}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -125,14 +126,21 @@ function Board() {
   }, [getAccessTokenSilently, isAuthenticated, updateJobs]);
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', pt: 8, px: 2, mt: 2 }}>
-      <Box sx={{ overflowX: 'auto', whiteSpace: 'nowrap' }}>
-        <Grid container spacing={2} sx={{ display: 'inline-flex', flexWrap: 'nowrap' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '80vh', pt: 8, px: 2, mt: 2 }}>
+      <Box sx={{ overflowX: 'auto', whiteSpace: 'nowrap', overflowY: 'hidden' }}>
+        <Grid container spacing={0} sx={{ display: 'flex', flexWrap: 'nowrap' }}>
           {jobs &&
-            columnOrder.map((status) => (
-              <Grid item key={status} sx={{ minWidth: '300px' }}>
-                <Column jobs={jobs[status]} status={status} handleJobStatusChange={handleJobStatusChange}/>
-              </Grid>
+            columnOrder.map((status, index) => (
+              <Fragment key={status}>
+                <Grid item key={`${status}-column`} sx={{ minWidth: '300px' }}>
+                  <Column jobs={jobs[status]} status={status} handleJobStatusChange={handleJobStatusChange}/>
+                </Grid>
+                {index < columnOrder.length - 1 && (
+                  <Grid item key={`${status}-divider`} sx={{ display: 'flex', alignItems: 'stretch' }}>
+                    <ColumnDivider />
+                  </Grid>
+                )}
+              </Fragment>
             ))}
         </Grid>
       </Box>
