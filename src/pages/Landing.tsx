@@ -8,8 +8,11 @@ import letter from '../images/undraw_letter_re_8m03.svg';
 import resume from '../images/undraw_online_resume_re_ru7s.svg';
 import welldone from '../images/undraw_well_done_re_3hpo.svg';
 import developer from '../images/undraw_code_thinking_re_gka2.svg';
+import { Link } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Landing: React.FC = () => {
+  const { loginWithRedirect } = useAuth0();
   return (
     <Box width={"100%"}>
       {/* Hero Section */}
@@ -23,7 +26,7 @@ const Landing: React.FC = () => {
             Welcome to Vega, an app designed to ease the job hunt for tech workers by enabling easy, nuanced management of job postings, statuses, and more.
           </Typography>
           <Typography variant="h6" color="common.white" sx={{ mt: 4 }}>Don't search alone:</Typography>
-          <Button variant="contained" color="secondary" size="large" sx={{ mt: 2 }}>
+          <Button variant="contained" color="secondary" size="large" sx={{ mt: 2 }} onClick={() => loginWithRedirect({ authorizationParams: { screen_hint: 'signup' }})}>
             Let Vega be your North Star.
           </Button>
         </Box>
@@ -251,9 +254,9 @@ const Landing: React.FC = () => {
                 <Typography variant="body1" paragraph>
                   To the ancient Greeks, the constellation Lyra was formed from the harp of Orpheus, with Vega as its handle. As such, I would like for this app to be the instrument of guidance and focus for all job seekers.
                 </Typography> */}
-                <Typography variant="body2" color="textSecondary">
-                  Read more here: <a href="https://en.wikipedia.org/wiki/Vega" target="_blank" rel="noopener noreferrer" style={{ color: "#dc2273" }}>Vega on Wikipedia</a>
-                </Typography>
+                <Button variant="contained" color="secondary">
+                  <Link to="/about" style={{ color: "#FFFFFF" }}>Read More</Link>
+                </Button>
               </CardContent>
             </Card>
           </Grid>

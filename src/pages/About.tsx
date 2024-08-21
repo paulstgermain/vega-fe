@@ -65,6 +65,7 @@ const About: React.FC = () => {
                       href="https://en.wikipedia.org/wiki/Vega"
                       target="_blank"
                       rel="noopener noreferrer"
+                      style={{ color: "#dc2273" }}
                     >
                       Vega on Wikipedia
                     </a>
