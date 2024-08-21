@@ -3,11 +3,45 @@ import Column from '../components/Column';
 import { Grid, Box } from '@mui/material';
 import { useAuth0 } from "@auth0/auth0-react";
 import ColumnDivider from '../components/ColumnDivider';
+import AddJobButton from '../components/AddJobButton';
+import AddJobModal from '../components/AddJobModal';
 
 function Board() {
   const [jobs, setJobs] = useState<JobsByStatus | null>(null);
   const [updateJobs, setUpdateJobs] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { isAuthenticated, getAccessTokenSilently, loginWithRedirect, user } = useAuth0();
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleSaveNewJob = async (newJob: any) => {
+    // todo: add api call here
+    const accessToken = await getAccessTokenSilently({
+      authorizationParams: {
+        audience: process.env.REACT_APP_API_AUDIENCE,
+        scope: "read:current_user",
+      },
+    });
+    fetch(`${process.env.REACT_APP_BE_NODE_API}/api/jobs`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify(newJob),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setUpdateJobs(true);
+        console.log('New job added:', data);
+      });
+  };
 
   const columnOrder = [
     'discovered',
@@ -144,6 +178,13 @@ function Board() {
             ))}
         </Grid>
       </Box>
+      <AddJobButton onClick={handleOpenModal} />
+
+      <AddJobModal
+        open={isModalOpen}
+        handleClose={handleCloseModal}
+        handleSave={handleSaveNewJob}
+      />
     </Box>
   );
 }

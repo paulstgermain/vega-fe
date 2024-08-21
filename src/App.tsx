@@ -7,10 +7,13 @@ import theme from './theme';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AppLayout from './components/AppLayout';
+import About from './pages/About';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <ThemeProvider theme={theme}>
         { /* CSS Reset */ }
         <CssBaseline />
@@ -19,6 +22,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/app" element={<AuthenticationGuard component={Board} />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </AppLayout>
       </ThemeProvider>

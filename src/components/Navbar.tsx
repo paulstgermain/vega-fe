@@ -72,21 +72,34 @@ function NavBar(): JSX.Element {
               >
                   Home
               </Link>
-              {isAuthenticated && (
-                <Link
-                  to="/app"
+              <Link
+                  to="/about"
                   style={{
-                      color: 'white',
-                      textDecorationColor: 'rgb(227, 78, 143)',
-                      textDecorationThickness: '3px',
-                      textUnderlineOffset: '4px',
-                      fontWeight: 'normal',
-                      marginRight: '12px'
+                    color: 'white',
+                    textDecorationColor: 'rgb(227, 78, 143)',
+                    textDecorationThickness: '3px',
+                    textUnderlineOffset: '4px',
+                    fontWeight: 'normal',
+                    marginRight: '12px'
                   }}
-                >
-                  App
+                  >
+                  About
                 </Link>
-              )}
+                {isAuthenticated && (
+                  <Link
+                    to="/app"
+                    style={{
+                        color: 'white',
+                        textDecorationColor: 'rgb(227, 78, 143)',
+                        textDecorationThickness: '3px',
+                        textUnderlineOffset: '4px',
+                        fontWeight: 'normal',
+                        marginRight: '12px'
+                    }}
+                  >
+                    App
+                  </Link>
+                )}
             </Box>
             <AuthButtons />
           </Toolbar>
