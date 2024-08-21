@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Box, Typography, TextField, Button, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
-const JobModal: React.FC<JobModalProps> = ({ open, handleClose, job, handleSave }) => {
+const JobModal: React.FC<JobModalProps> = ({ open, handleClose, job, handleSave, handleDelete }) => {
   const [jobInfo, setJobInfo] = useState(job);
 
   useEffect(() => {
@@ -108,11 +108,18 @@ const JobModal: React.FC<JobModalProps> = ({ open, handleClose, job, handleSave 
             <MenuItem value="ghosted">Ghosted</MenuItem>
           </Select>
         </FormControl>
-        <Box sx={{ mt: 2, display: 'flex', justifyContent: 'flex-end' }}>
-          <Button onClick={handleClose} sx={{ mr: 2 }}>Cancel</Button>
-          <Button variant="contained" onClick={handleSubmit}>
-            Save
+        <Box sx={{ mt: 2, display: 'flex', justifyContent: 'space-between' }}>
+          <Button size="small" color="error" variant="outlined" onClick={() => handleDelete(jobInfo.id)}>
+            Delete
           </Button>
+          <span>
+            <Button onClick={handleClose} sx={{ mr: 2 }}>
+              Cancel
+            </Button>
+            <Button variant="contained" onClick={handleSubmit}>
+              Save
+            </Button>
+          </span>
         </Box>
       </Box>
     </Modal>

@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import JobCard from "./JobCard";
 import { Typography } from "@mui/material";
 
-const Column: React.FC<ColumnProps> = ({jobs, status, handleJobStatusChange}) => {
+const Column: React.FC<ColumnProps> = ({jobs, status, handleJobStatusChange, handleJobDeletion}) => {
 
   const title = status.charAt(0).toUpperCase() + status.slice(1);
 
@@ -12,7 +12,7 @@ const Column: React.FC<ColumnProps> = ({jobs, status, handleJobStatusChange}) =>
       <Typography align="center" mt={2} mb={4} sx={{ fontSize: 32 }} color="text.secondary" fontWeight={500}>{title} ({jobs ? jobs.length : 0})</Typography>
       <Box sx={{ px: 1 }}>
         {jobs && jobs.map((job: Job, index) => (
-          <JobCard key={index} job={job} handleJobStatusChange={handleJobStatusChange} />
+          <JobCard key={index} job={job} handleJobStatusChange={handleJobStatusChange} handleJobDeletion={handleJobDeletion} />
         ))}
         {!jobs && (
           <Typography align="center" mt={2} mb={4} sx={{ fontSize: 16, wordWrap: 'break-word' }} color="text.secondary" fontWeight={500}>No jobs in this column</Typography>

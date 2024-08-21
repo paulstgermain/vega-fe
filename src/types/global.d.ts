@@ -20,6 +20,7 @@ interface JobsByStatus {
 interface JobCardProps {
   job: Job;
   handleJobStatusChange: (event: SelectChangeEvent<string>, child: ReactNode) => void;
+  handleJobDeletion: (jobId: string) => void;
 }
 
 interface ColumnProps {
@@ -31,6 +32,7 @@ interface ColumnProps {
   jobs: Job[];
   status: string;
   handleJobStatusChange: (event: SelectChangeEvent<string>, child: ReactNode) => void;
+  handleJobDeletion: (jobId: string) => void;
 }
 
 interface JobModalProps {
@@ -38,4 +40,5 @@ interface JobModalProps {
   handleClose: () => void;
   job: Job;
   handleSave: (updatedJob: any) => void;
+  handleDelete: (jobId: string) => void;
 }

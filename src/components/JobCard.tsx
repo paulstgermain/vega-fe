@@ -3,7 +3,7 @@ import { ReactNode, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import JobModal from './JobModal';
 
-const JobCard: React.FC<JobCardProps> = ({ job, handleJobStatusChange }) => {
+const JobCard: React.FC<JobCardProps> = ({ job, handleJobStatusChange, handleJobDeletion }) => {
   const { id, job_title, salary, company_name, location, url, description, status } = job;
   const { getAccessTokenSilently } = useAuth0();
 
@@ -129,6 +129,7 @@ const JobCard: React.FC<JobCardProps> = ({ job, handleJobStatusChange }) => {
         handleClose={handleCloseModal}
         job={job}
         handleSave={handleSave}
+        handleDelete={handleJobDeletion}
       />
     </Box>
   );

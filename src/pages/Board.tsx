@@ -122,6 +122,63 @@ function Board() {
     }
   };
 
+  // add function to handle job deletion in the same way as job status change
+
+  const handleJobDeletion = async (jobId: string) => {
+    const updatedJobs = { ...jobs };
+  
+    // Find the status of the job to be deleted
+    const jobStatus = Object.keys(updatedJobs).find((status) =>
+      updatedJobs[status].some((job) => job.id === jobId)
+    );
+  
+    if (!jobStatus) {
+      console.error(`Job with id ${jobId} not found.`);
+      return;
+    }
+  
+    try {
+      const accessToken = await getAccessTokenSilently({
+        authorizationParams: {
+          audience: process.env.REACT_APP_API_AUDIENCE,
+          scope: "read:current_user",
+        },
+      });
+  
+      const response = await fetch(`${process.env.REACT_APP_BE_NODE_API}/api/jobs/${jobId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+  
+      if (response.status === 200) {
+        // Remove job from the jobs state
+        const newJobsState = {
+          ...updatedJobs,
+          [jobStatus]: updatedJobs[jobStatus].filter((job) => job.id !== jobId),
+        };
+  
+        // Update the jobs state to trigger a re-render
+        setJobs(newJobsState);
+      } else {
+        console.error('Failed to delete job');
+      }
+    } catch (e) {
+      if ((e as any).error === "consent_required") {
+        await loginWithRedirect({
+          authorizationParams: {
+            audience: process.env.REACT_APP_API_AUDIENCE,
+            scope: "read:current_user",
+          },
+        });
+      } else {
+        console.error(e);
+      }
+    }
+  }
+
   const getJobs = async () => {
     try {
       const accessToken = await getAccessTokenSilently({
@@ -167,7 +224,7 @@ function Board() {
             columnOrder.map((status, index) => (
               <Fragment key={status}>
                 <Grid item key={`${status}-column`} sx={{ minWidth: '300px' }}>
-                  <Column jobs={jobs[status]} status={status} handleJobStatusChange={handleJobStatusChange}/>
+                  <Column jobs={jobs[status]} status={status} handleJobStatusChange={handleJobStatusChange} handleJobDeletion={handleJobDeletion}/>
                 </Grid>
                 {index < columnOrder.length - 1 && (
                   <Grid item key={`${status}-divider`} sx={{ display: 'flex', alignItems: 'stretch' }}>
