@@ -14,7 +14,7 @@ const Column: React.FC<ColumnProps> = ({jobs, status, handleJobStatusChange, han
         {jobs && jobs.map((job: Job, index) => (
           <JobCard key={index} job={job} handleJobStatusChange={handleJobStatusChange} handleJobDeletion={handleJobDeletion} />
         ))}
-        {!jobs && (
+        {(!jobs || jobs.length === 0) && (
           <Typography align="center" mt={2} mb={4} sx={{ fontSize: 16, wordWrap: 'break-word' }} color="text.secondary" fontWeight={500}>No jobs in this column</Typography>
         )}
       </Box>
