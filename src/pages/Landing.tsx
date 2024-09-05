@@ -22,8 +22,11 @@ const Landing: React.FC = () => {
           <Typography variant="h2" color="common.white" gutterBottom>
             Stressful job search?
           </Typography>
+          <Typography variant="h5" color="common.white">
+            Welcome to Vega, an app designed to ease the job hunt for tech workers by enabling easy, nuanced management
+          </Typography>
           <Typography variant="h5" color="common.white" gutterBottom>
-            Welcome to Vega, an app designed to ease the job hunt for tech workers by enabling easy, nuanced management of job postings, statuses, and more.
+          of job applications, statuses, and more.
           </Typography>
           <Typography variant="h6" color="common.white" sx={{ mt: 4 }}>Don't search alone:</Typography>
           <Button variant="contained" color="secondary" size="large" sx={{ mt: 2 }} onClick={() => loginWithRedirect({ authorizationParams: { screen_hint: 'signup' }})}>
