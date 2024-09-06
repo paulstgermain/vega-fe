@@ -50,6 +50,7 @@ function Board() {
     'interviewing',
     'offer received',
     'hired',
+    'rejected',
     'ghosted',
   ];
 

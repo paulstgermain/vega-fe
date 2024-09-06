@@ -111,6 +111,7 @@ const JobCard: React.FC<JobCardProps> = ({ job, handleJobStatusChange, handleJob
               <MenuItem value="interviewing">Interviewing</MenuItem>
               <MenuItem value="offer received">Offer Received</MenuItem>
               <MenuItem value="hired">Hired</MenuItem>
+              <MenuItem value="rejected">Rejected</MenuItem>
               <MenuItem value="ghosted">Ghosted</MenuItem>
             </Select>
           </FormControl>
