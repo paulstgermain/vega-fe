@@ -26,6 +26,8 @@ const FindAJobModal: React.FC<FindAJobModalProps> = ({ open, handleClose }) => {
   const [searchURL, setSearchURL] = useState('');
   const [showSearchURL, setShowSearchURL] = useState(false);
 
+  const isFormValid = keywordOne && keywordTwo && jobSite;
+
   const handleSubmit = () => {
     const searchURL = `https://www.google.com/search?q=%22${keywordOne}%22+%22${keywordTwo}%22+site%3A${jobSite}&tbs=qdr:w`;
     setSearchURL(searchURL);
@@ -125,7 +127,7 @@ const FindAJobModal: React.FC<FindAJobModalProps> = ({ open, handleClose }) => {
           </Grid>
           <Grid item xs={12} sx={{ textAlign: 'right' }}>
             <Button variant="outlined" color="error" sx={{ mr: 2 }} onClick={handleClose}>Close</Button>
-            <Button variant="contained" color="secondary" onClick={handleSubmit}>
+            <Button variant="contained" color="secondary" disabled={!isFormValid} onClick={handleSubmit}>
               Get Link
             </Button>
           </Grid>
