@@ -9,8 +9,11 @@ import AuthButtons from './AuthButtons';
 
 import vega from '../images/vega.png';
 
-// update function declaration to use TypeScript
-function NavBar(): JSX.Element {
+interface NavBarProps {
+  handleOpen: () => void;
+}
+
+const NavBar: React.FC<NavBarProps> = ({ handleOpen }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation(); // Get the current location
 
@@ -100,6 +103,24 @@ function NavBar(): JSX.Element {
                     App
                   </Link>
                 )}
+                <Typography
+                  onClick={handleOpen}
+                  sx={{
+                    color: 'white',
+                    fontWeight: 'normal',
+                    marginRight: '12px',
+                    display: 'inline-flex',
+                    cursor: 'pointer',
+                    '&:hover': {
+                      textDecoration: 'underline',
+                      textDecorationColor: 'rgb(227, 78, 143)',
+                      textDecorationThickness: '3px',
+                      textUnderlineOffset: '4px',
+                    }
+                  }}
+                >
+                  Find-A-Job
+                </Typography>
             </Box>
             <AuthButtons />
           </Toolbar>
