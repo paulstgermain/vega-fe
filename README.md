@@ -31,7 +31,9 @@ npm install
 -  5. Copy your new app's **Client ID** value into the `.env` file's `REACT_APP_AUTH0_CLIENT_ID` value
 -  6. Go to **APIs** under **Applications** on the Auth0 Dashboard, create a new API with the basic settings left as-is
 -  7. Copy your new API's **API Audience** value into the `.env` file's `REACT_APP_API_AUDIENCE` value
-4. Run the app:
+-  8. **(Optional)** From the Auth0 dashboard, create 2 dummy users to be used for demo purposes, take note of their `user_id`s
+4. Complete the [back end repo's installation instructions](https://github.com/paulstgermain/vega-be?tab=readme-ov-file#installation-instructions) and start the server
+5. Run the app:
 ```
 npm start
 ```
