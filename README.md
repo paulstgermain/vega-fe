@@ -1,46 +1,61 @@
-# Getting Started with Create React App
+# Vega
+_A proof-of-concept application dedicated to helping job seekers better manage, strategize, and more efficiently pursue the next step in their careers! **Official rebuild coming soon!**_
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[View the demo video](https://www.youtube.com/watch?v=NjSP83HS4bg), or watch the [Find-a-Job feature walkthrough](https://www.youtube.com/watch?v=RwPbEVoYpzU)
 
-## Available Scripts
+## Table of Contents
+- [Getting Started](#getting-started)
+  - [Requirements](#requirements)
+  - [Installation Instructions](#installation-instructions)
+  - [Usage](#usage)
+- [Contribution Guidelines](#contribution-guidelines)
 
-In the project directory, you can run:
+## Getting Started
+### Requirements
+Before you begin, be sure you have the most recent versions of `node` and `npm` installed.
 
-### `npm start`
+### Installation Instructions
+1. Install packages:
+```
+npm install
+```
+2. Set up your `.env` file:
+-  1. Create a free [Auth0](https://www.auth0.com/) account
+-  2. Click **Create Application** in the dashboard, and follow the inputs and instructions to set up a new **Single Page Application**
+-  3. Rename the `.env.example` file to `.env`
+-  4. Copy your new app's **Domain** value into the `.env` file's `REACT_APP_AUTH0_DOMAIN` value
+-  5. Copy your new app's **Client ID** value into the `.env` file's `REACT_APP_AUTH0_CLIENT_ID` value
+-  6. Go to **APIs** under **Applications** on the Auth0 Dashboard, create a new API with the basic settings left as-is
+-  7. Copy your new API's **API Audience** value into the `.env` file's `REACT_APP_API_AUDIENCE` value
+3. Run the app:
+```
+npm start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Usage
+1. **Create an account**, or sign in with your existing Auth0 account to be taken to the **Dashboard**
+2. From the dashboard, click the pink, circular `+` button to add a new Job card to the board
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### Once you have any job card on the board, you can take any of the following actions:
+1. Use the `Status` dropdown to change the job's status quickly
+2. Click the `To Job` button to be taken to the job's original posting URL (If a proper URL was added)
+3. Click `View Job Data` to view all gathered info for that job
+4. From this view, click the `Delete` button to delete the job from your database, or...
+5. ... Edit the job's info, then click `Save` to save your changes
 
-### `npm test`
+## Contribution Guidelines
+Pull requests are welcome. For major changes, please open an issue first. Before writing any code, please be sure to open a feature branch.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+For example, `feature/short_title_describing_feature` for a new feature, or `bugfix/short_title_describing_bugfix` for bug fixes.
 
-### `npm run build`
+**All PRs will be reviewed by the repository owner before they will be accepted and merged.**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Screenshots
+![image](https://github.com/user-attachments/assets/b7a82e1c-1f8e-4be5-91f4-a21bb8b0bade)
+_Main page hero section_
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![image](https://github.com/user-attachments/assets/d1f2d8ea-fc62-4223-b85f-423d71a48134)
+_Main Dashboard view_
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![image](https://github.com/user-attachments/assets/0f4ea9a8-c42e-4398-a953-5ff836c94926)
+_Job card 'View Job Data' modal view example_
